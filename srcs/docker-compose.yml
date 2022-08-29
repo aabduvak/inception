@@ -1,0 +1,62 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/29 16:32:11 by aabduvak          #+#    #+#              #
+#    Updated: 2022/08/29 16:32:56 by aabduvak         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+version: "3"
+
+networks:
+  inception: {}
+
+volumes:
+    mariadb_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/home/data/mariadb
+    wordpress_data:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: /home/home/data/wordpress
+services:
+  mariadb:
+    env_file:
+        - ./.env/mariadb.env
+    build:
+      context: ./mariadb
+      dockerfile: Dockerfile
+    image: mariadb
+    
+    container_name: MARIADB
+    networks:
+      - inception
+    volumes:
+      - mariadb_data:/var/lib/mysql:rw
+    restart: unless-stopped
+  
+  wordpress:
+    build:
+      context: ./wordpress
+      dockerfile: Dockerfile
+    image: wordpress
+    container_name: WORDPRESS
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/wordpress:rw
+    depends_on:
+       - mariadb
+    env_file:
+       - ./.env/mariadb.env
+       - ./.env/wordpress.env
+    restart: unless-stopped
