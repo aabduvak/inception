@@ -46,7 +46,7 @@ services:
   
   wordpress:
     build:
-      context: ./wordpress
+      context: wordpress
       dockerfile: Dockerfile
     image: wordpress
     container_name: WORDPRESS
@@ -59,4 +59,20 @@ services:
     env_file:
        - ./.env/mariadb.env
        - ./.env/wordpress.env
+    restart: unless-stopped
+    
+  nginx:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    image: nginx
+    container_name: NGINX
+    depends_on:
+     - wordpress
+    ports:
+      - "4242:443"
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/wordpress:ro
     restart: unless-stopped
