@@ -10,24 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-version: "3"
+version: "3.8"
 
 networks:
   inception: {}
 
-volumes:
-    mariadb_data:
-        driver: local
-        driver_opts:
-            type: none
-            o: bind
-            device: /home/home/data/mariadb
-    wordpress_data:
-        driver: local
-        driver_opts:
-            type: none
-            o: bind
-            device: /home/home/data/wordpress
 services:
   mariadb:
     env_file:
@@ -41,7 +28,7 @@ services:
     networks:
       - inception
     volumes:
-      - mariadb_data:/var/lib/mysql:rw
+      - "~/Desktop/inception/mariadb:/var/lib/mysql"
     restart: unless-stopped
   
   wordpress:
@@ -53,7 +40,7 @@ services:
     networks:
       - inception
     volumes:
-      - wordpress_data:/var/www/wordpress:rw
+      - "~/Desktop/inception/wordpress:/var/www/html"
     depends_on:
        - mariadb
     env_file:
@@ -74,5 +61,5 @@ services:
     networks:
       - inception
     volumes:
-      - wordpress_data:/var/www/wordpress:ro
+      - "~/Desktop/inception/wordpress:/var/www/html"
     restart: unless-stopped

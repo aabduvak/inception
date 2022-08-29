@@ -6,13 +6,11 @@
 #    By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 16:57:37 by aabduvak          #+#    #+#              #
-#    Updated: 2022/08/29 17:17:51 by aabduvak         ###   ########.fr        #
+#    Updated: 2022/08/29 19:29:05 by aabduvak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-inception: db wp adminer nginx
-
-bonus: inception app ftp adminer redis dozzle
+inception: db wp nginx
 
 nginx:
 	sudo docker compose --file ./srcs/docker-compose.yml up --detach nginx

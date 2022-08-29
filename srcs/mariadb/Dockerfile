@@ -6,7 +6,7 @@
 #    By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 13:00:05 by aabduvak          #+#    #+#              #
-#    Updated: 2022/08/29 13:00:47 by aabduvak         ###   ########.fr        #
+#    Updated: 2022/08/29 19:10:08 by aabduvak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ LABEL maintainer="abdulaziz.yosk@gmail.com"
 
 EXPOSE 3306
 
-ENV WP_DB_NAME=${WP_DB_NAME}
-ENV MYSQL_USER=${MYSQL_USER}
-ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
-ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#ENV WP_DB_NAME=${WP_DB_NAME}
+#ENV MYSQL_USER=${MYSQL_USER}
+#ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
+#ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
 RUN apt-get update -y
 RUN apt full-upgrade -y
