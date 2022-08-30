@@ -3,35 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aabduvak <aabduvak@42istanbul.com.tr>      +#+  +:+       +#+         #
+#    By: aabduvak <aabduvak@42ISTANBUL.COM.TR>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 16:57:37 by aabduvak          #+#    #+#              #
-#    Updated: 2022/08/29 19:29:05 by aabduvak         ###   ########.fr        #
+#    Updated: 2022/08/30 13:00:44 by aabduvak         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-inception: db wp nginx
+NAME = inception
 
-nginx:
-	sudo docker compose --file ./srcs/docker-compose.yml up --detach nginx
+all: linux prune reload
 
-wp:
-	sudo docker compose --file ./srcs/docker-compose.yml up --detach wordpress
-
-db:
-	sudo docker compose --file ./srcs/docker-compose.yml up --detach mariadb
-
-logs:
-	sudo docker compose --file ./srcs/docker-compose.yml logs
-
-ls:
-	sudo docker image ls
-	sudo docker ps --all
-	sudo docker volume ls
-
-stop:
-	sudo docker compose --file ./srcs/docker-compose.yml stop
-
+linux:
+	@ echo "127.0.0.1 aabduvak.42.fr" >> /etc/hosts
+	
 down:
 	sudo docker compose --file ./srcs/docker-compose.yml down
 
@@ -43,8 +28,7 @@ prune:
 
 clean: down prune rm
 
-all: inception
+reload: 
+	@ docker-compose -f srcs/docker-compose.yml up --build
 
-re: fclean all
-
-.PHONY: clean fclean all re
+.PHONY: linux stop clean prune reload all
