@@ -57,6 +57,9 @@ services:
       WP_DATABASE_NAME: ${WP_DATABASE_NAME}
       WP_DATABASE_USR:  ${WP_DATABASE_USR}
       WP_DATABASE_PWD:  ${WP_DATABASE_PWD}
-    
+
+volumes:
+  mariadb: {}
+  website: {}
 networks:
   general:
