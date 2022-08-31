@@ -1,8 +1,6 @@
-<h1 align="center"> 🐳 inception </h1>
+<h1 align="center"> 🐳 INCEPTION </h1>
 
-<h2 align="center">one container is not enough
-<br>
-we need to go deeper
+<h2 align="center">one container is not enough we need to go deeper
 </h2>
 <br>
 <p align="center">
