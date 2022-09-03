@@ -5,7 +5,7 @@
 <br>
 <p align="center">
 <p align=center>
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aabduvak/inception">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/aabduvak/inception?color=blue">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/aabduvak/inception">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/aabduvak/inception">
 </p>
